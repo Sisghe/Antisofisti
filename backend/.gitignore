@@ -1,0 +1,28 @@
+# Dipendenze
+node_modules/
+
+# Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# File temporanei e IDE
+*.log
+*.tmp
+*.swp
+.vscode/
+.idea/
+
+# Output build (se presente)
+dist/
+build/
+
+# Altri file generati
+package-lock.json
