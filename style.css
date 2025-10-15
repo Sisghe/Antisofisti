@@ -1,0 +1,80 @@
+/* Contenitore generale */
+.large-header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  overflow: hidden;
+}
+
+/* Canvas animato */
+#demo-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Contenuto sopra l’animazione */
+.content-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+/* Titolo */
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: #111;
+}
+
+/* Pulsanti */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-accesso {
+  background-color: #333;
+  color: white;
+}
+
+.btn-registrati {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-ospite {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.motto {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #444;
+  margin-top: -1rem;
+  margin-bottom: 2.5rem;
+  height: 2rem;
+}
