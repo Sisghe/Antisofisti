@@ -3,11 +3,11 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: white;
+  background: #121212; /* Sfondo scuro */
   overflow: hidden;
 }
 
-/* Canvas animato */
+/* Canvas animato - potremmo voler cambiare i colori delle particelle */
 #demo-canvas {
   position: absolute;
   top: 0;
@@ -15,7 +15,7 @@
   z-index: 0;
 }
 
-/* Contenuto sopra l’animazione */
+/* Contenuto sopra l'animazione */
 .content-wrapper {
   position: absolute;
   top: 50%;
@@ -30,7 +30,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin-bottom: 2rem;
-  color: #111;
+  color: #e0e0e0; /* Testo chiaro */
 }
 
 /* Pulsanti */
@@ -48,21 +48,22 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  min-width: 200px;
 }
 
 .btn-accesso {
-  background-color: #333;
-  color: white;
+  background-color: #333; /* Manteniamo scuro, ma cambieremo il testo */
+  color: #e0e0e0; /* Testo chiaro */
 }
 
 .btn-registrati {
-  background-color: #4a90e2;
+  background-color: #4a90e2; /* Blu esistente */
   color: white;
 }
 
 .btn-ospite {
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: #2c2c2c; /* Sfondo scuro per il pulsante ospite */
+  color: #e0e0e0; /* Testo chiaro */
 }
 
 button:hover {
@@ -73,8 +74,24 @@ button:hover {
 .motto {
   font-size: 1.2rem;
   font-style: italic;
-  color: #444;
+  color: #a0a0a0; /* Testo secondario */
   margin-top: -1rem;
   margin-bottom: 2.5rem;
   height: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .btn-group {
+    gap: 0.75rem;
+  }
+  
+  button {
+    min-width: 180px;
+    padding: 0.6rem 1.2rem;
+  }
 }

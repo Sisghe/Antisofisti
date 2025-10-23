@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrati - Antisofisti</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css"> <!-- NUOVO FILE CSS -->
+</head>
+<body>
+  <div id="large-header" class="large-header">
+    <canvas id="demo-canvas"></canvas>
+
+    <div class="content-wrapper">
+      <div class="register-form">
+        <h2> Registrati</h2>
+        
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="nickname">Soprannome (pubblico)</label>
+            <input type="text" id="nickname" name="nickname" required>
+            <div class="info-text">Questo sarà il tuo nome pubblico nel forum</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Conferma Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+          </div>
+          
+          <button type="submit" class="btn-register">Registrati</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← Torna alla Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nickname = document.getElementById('nickname').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        alert('Le password non coincidono');
+        return;
+      }
+      
+      if (nickname && password) {
+        sessionStorage.setItem('currentUser', nickname);
+        alert('Registrazione completata! Ora puoi accedere al forum.');
+        window.location.href = 'forum.html';
+      }
+    });
+  </script>
+</body>
+</html>

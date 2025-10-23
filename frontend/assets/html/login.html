@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accedi - Antisofisti</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css"> <!-- NUOVO FILE CSS -->
+</head>
+<body>
+  <div id="large-header" class="large-header">
+    <canvas id="demo-canvas"></canvas>
+
+    <div class="content-wrapper">
+      <div class="login-form">
+        <h2> Accedi</h2>
+        
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username">Soprannome</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          
+          <button type="submit" class="btn-login">Accedi</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← Torna alla Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Simulazione login (sostituire con autenticazione reale)
+      if (username && password) {
+        sessionStorage.setItem('currentUser', username);
+        window.location.href = 'forum.html';
+      } else {
+        alert('Inserisci username e password');
+      }
+    });
+  </script>
+</body>
+</html>

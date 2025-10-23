@@ -4,6 +4,7 @@
     initHeader();
     initAnimation();
     addListeners();
+    setupNavigation();
 
     function initHeader() {
         width = window.innerWidth;
@@ -126,54 +127,79 @@
     }
 
     function drawLines(p) {
-        if (!p.active) return;
-        for (let i in p.closest) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(156,217,249,' + p.active + ')';
-            ctx.stroke();
-        }
+    if (!p.active) return;
+    for (let i in p.closest) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.closest[i].x, p.closest[i].y);
+        ctx.strokeStyle = 'rgba(224, 224, 224,' + p.active + ')'; // Colore chiaro
+        ctx.stroke();
     }
+}
 
     function Circle(pos, rad, color) {
-        this.pos = pos;
-        this.radius = rad;
-        this.color = color;
+    this.pos = pos;
+    this.radius = rad;
+    this.color = color;
 
-        this.draw = function() {
-            if (!this.active) return;
-            ctx.beginPath();
-            ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(156,217,249,' + this.active + ')';
-            ctx.fill();
-        };
-    }
+    this.draw = function() {
+        if (!this.active) return;
+        ctx.beginPath();
+        ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'rgba(224, 224, 224,' + this.active + ')'; // Colore chiaro
+        ctx.fill();
+    };
+}
 
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
     }
+
+    // NAVIGAZIONE
+    function setupNavigation() {
+        const guestBtn = document.querySelector('.btn-ospite');
+        const loginBtn = document.querySelector('.btn-accesso');
+        const registerBtn = document.querySelector('.btn-registrati');
+
+        if (guestBtn) {
+            guestBtn.addEventListener('click', function() {
+                sessionStorage.removeItem('currentUser');
+                window.location.href = 'forum.html';
+            });
+        }
+
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+        }
+
+        if (registerBtn) {
+            registerBtn.addEventListener('click', function() {
+                window.location.href = 'registrazione.html';
+            });
+        }
+    }
+
+    // MOTTI ANIMATI
+    const motti = [
+        "So di non sapere. – Socrate",
+        "La vera ignoranza è rifiutare la conoscenza. – Popper",
+        "Chi pensa è libero. Chi obbedisce ciecamente è schiavo. – Seneca",
+        "Dubita di tutto, ma non del tuo pensiero critico. – Cartesio remix"
+    ];
+
+    const mottoEl = document.getElementById('motto');
+    const motto = motti[Math.floor(Math.random() * motti.length)];
+    let i = 0;
+
+    function scriviMotto() {
+        if (i < motto.length) {
+            mottoEl.textContent += motto.charAt(i);
+            i++;
+            setTimeout(scriviMotto, 50);
+        }
+    }
+
+    window.onload = scriviMotto;
 })();
-
-
-// MOTTI ANIMATI
-const motti = [
-  "So di non sapere. – Socrate",
-  "La vera ignoranza è rifiutare la conoscenza. – Popper",
-  "Chi pensa è libero. Chi obbedisce ciecamente è schiavo. – Seneca",
-  "Dubita di tutto, ma non del tuo pensiero critico. – Cartesio remix"
-];
-
-const mottoEl = document.getElementById('motto');
-const motto = motti[Math.floor(Math.random() * motti.length)];
-let i = 0;
-
-function scriviMotto() {
-  if (i < motto.length) {
-    mottoEl.textContent += motto.charAt(i);
-    i++;
-    setTimeout(scriviMotto, 50);
-  }
-}
-
-window.onload = scriviMotto;
